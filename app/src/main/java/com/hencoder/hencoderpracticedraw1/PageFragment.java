@@ -34,6 +34,9 @@ public class PageFragment extends Fragment {
         ViewStub practiceStub = (ViewStub) view.findViewById(R.id.practiceStub);
         practiceStub.setLayoutResource(practiceLayoutRes);
         practiceStub.inflate();
+        if (R.layout.practice_empty == practiceLayoutRes) {
+            view.findViewById(R.id.rl_practice).setVisibility(View.GONE);
+        }
 
         return view;
     }
