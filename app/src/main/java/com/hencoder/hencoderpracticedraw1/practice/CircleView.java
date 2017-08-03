@@ -14,6 +14,7 @@ import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
 import android.graphics.Shader;
 import android.graphics.Xfermode;
+import android.graphics.drawable.Drawable;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
@@ -72,6 +73,7 @@ public class CircleView extends View {
     private ItemInner[] mItemData;
     private Point[] mPosData;
     private Xfermode mXfermode = new PorterDuffXfermode(PorterDuff.Mode.SRC_IN);
+    Drawable center;
     private void init(Context context) {
         mContext = context;
         mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
@@ -86,6 +88,7 @@ public class CircleView extends View {
         mTxtPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         mTxtPaint.setTextSize(mTxtSize);
         mTxtPaint.setColor(mTxtColor);
+        center = mRes.getDrawable(R.drawable.button_drawable);
         initTestData();
     }
 
@@ -94,7 +97,7 @@ public class CircleView extends View {
         ItemData[] data = new ItemData[DEF_ICON_SIZE];
         String[] names = new String[] {"班圈", "作业", "荣誉", "通知", "成绩"};
         for (int i = 0; i < data.length; i++) {
-            data[i] = new ItemData(R.drawable.icon, names[i]);
+            data[i] = new ItemData(R.drawable.clock, names[i]);
         }
         setData(data);
     }
@@ -133,6 +136,9 @@ public class CircleView extends View {
         if (mItemData == null || mItemData.length != DEF_ICON_SIZE) {
             return;
         }
+        center.setBounds(cx - mIcCircleRadius, cy - mIcCircleRadius,
+                cx + mIcCircleRadius, cy + mIcCircleRadius);
+        center.draw(canvas);
         drawItem(canvas);
     }
 

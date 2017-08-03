@@ -7,6 +7,16 @@
 
     <com.hencoder.hencoderpracticedraw1.practice.CircleView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:visibility="visible"/>
+
+    <com.hencoder.hencoderpracticedraw1.practice.CircleLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+
+
+    </com.hencoder.hencoderpracticedraw1.practice.CircleLayout>
 
 </LinearLayout>
